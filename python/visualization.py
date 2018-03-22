@@ -23,6 +23,7 @@ parser.add_argument("-f", "--fpsdisp", help="Bool display FPS counter?", type=st
 parser.add_argument("-t", "--disptype", help="0 - Spectrum, 1 - Energy, 2 - Scroll", type=int)
 parser.add_argument("-c", "--colormode", help="0 - Normal, 1 - BRG, 2 - GBR", type=int)
 parser.add_argument("-n", "--nhist", help="Default -- 2", type=int)
+parser.add_argument("-m", "--minfreq", help="Minimum frequency registered, default -- 200", type=int)
 
 args = parser.parse_args()
 if args.device:
@@ -37,6 +38,8 @@ if args.fpsdisp is not None:
     config.DISPLAY_FPS = args.gui
 if args.nhist is not None:
     config.N_ROLLING_HISTORY = args.nhist
+if args.minfreq is not None:
+    config.MIN_FREQUENCY = args.minfreq
 
 disp_type = 0
 if args.disptype:
