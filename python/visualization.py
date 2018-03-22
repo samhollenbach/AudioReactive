@@ -8,6 +8,41 @@ import microphone
 import dsp
 import led
 
+import argparse
+
+def str_to_bool(v):
+    if v.lower() in ('yes', 'true', 't', 'y', '1'):
+        return True
+    elif v.lower() in ('no', 'false', 'f', 'n', '0'):
+        return False
+    else:
+        raise argparse.ArgumentTypeError('Boolean value expected.')
+parser = argparse.ArgumentParser()
+parser.add_argument("-d", "--device", help="Device type (esp8266, pi, or blinkstick)", type=str)
+parser.add_argument("-p", "--pixels", help="Number of pixels in LED strip", type=int)
+parser.add_argument("-b", "--fftbins", help="Number of FFT bins (see config.py)", type=int)
+parser.add_argument("-g", "--gui", help="Bool display GUI", type=str_to_bool, nargs='?', const=True)
+parser.add_argument("-f", "--fpsdisp", help="Bool display FPS counter?", type=str_to_bool, nargs='?', const=True)
+parser.add_argument("-t", "--disptype", help="0 - Spectrum, 1 - Energy, 2 - Scroll", type=int)
+parser.add_argument("-c", "--colormode", help="0 - Normal, 1 - BRG, 2 - GBR", type=int)
+args = parser.parse_args()
+if args.device:
+    config.DEVICE = args.device
+if args.pixels:
+    config.N_PIXELS = args.pixels
+if args.fftbins:
+    config.N_FFT_BINS = args.fftbins
+if args.gui is not None:
+    config.USE_GUI = args.gui
+if args.fpsdisp is not None:
+    config.DISPLAY_FPS = args.gui
+disp_type = 0
+if args.disptype:
+    disp_type = args.disptype
+color_mode = 0
+if args.colormode:
+    color_mode = args.colormode
+
 _time_prev = time.time() * 1000.0
 """The previous time that the frames_per_second() function was called"""
 
