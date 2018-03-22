@@ -4,9 +4,6 @@ import time
 import numpy as np
 from scipy.ndimage.filters import gaussian_filter1d
 import config
-import microphone
-import dsp
-import led
 
 import argparse
 
@@ -42,6 +39,11 @@ if args.disptype:
 color_mode = 0
 if args.colormode:
     color_mode = args.colormode
+
+import microphone
+import dsp
+import led
+
 
 _time_prev = time.time() * 1000.0
 """The previous time that the frames_per_second() function was called"""
