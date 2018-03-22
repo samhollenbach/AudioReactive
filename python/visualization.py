@@ -219,9 +219,9 @@ def visualize_spectrum(y):
     g = np.abs(diff)
     b = b_filt.update(np.copy(y))
     # Mirror the color channels for symmetric output
-    r = np.concatenate((r[::-1], r))
-    g = np.concatenate((g[::-1], g))
-    b = np.concatenate((b[::-1], b))
+    r = np.concatenate((r[::-1], r))**intensityscale
+    g = np.concatenate((g[::-1], g))**intensityscale
+    b = np.concatenate((b[::-1], b))**intensityscale
 
 
     if color_mode == 1:
@@ -233,7 +233,7 @@ def visualize_spectrum(y):
     elif color_mode == 4:
         output = np.array([b,g,r]) * 255
     elif color_mode == 5:
-        output = np.array([g**intensityscale,b**intensityscale,r**intensityscale]) * 255
+        output = np.array([g,b,r]) * 255
     else:
         output = np.array([r,g,b]) * 255
     #output = np.array([r, g,b]) * 255
