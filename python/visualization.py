@@ -207,7 +207,15 @@ def visualize_spectrum(y):
     r = np.concatenate((r[::-1], r))
     g = np.concatenate((g[::-1], g))
     b = np.concatenate((b[::-1], b))
-    output = np.array([r, g,b]) * 255
+
+
+    if color_mode == 1:
+        output = np.array([b,r,g]) * 255
+    elif color_mode == 1:
+        output = np.array([b,r,g]) * 255
+    else:
+        output = np.array([r,g,b]) * 255
+    #output = np.array([r, g,b]) * 255
     return output
 
 
