@@ -220,6 +220,10 @@ def visualize_spectrum(y):
         output = np.array([b,r,g]) * 255
     elif color_mode == 2:
         output = np.array([g,r,b]) * 255
+    elif color_mode == 3:
+        output = np.array([r,b,g]) * 255
+    elif color_mode == 4:
+        output = np.array([b,g,r]) * 255
     else:
         output = np.array([r,g,b]) * 255
     #output = np.array([r, g,b]) * 255
