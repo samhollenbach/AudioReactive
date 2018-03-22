@@ -22,6 +22,8 @@ parser.add_argument("-g", "--gui", help="Bool display GUI", type=str_to_bool, na
 parser.add_argument("-f", "--fpsdisp", help="Bool display FPS counter?", type=str_to_bool, nargs='?', const=True)
 parser.add_argument("-t", "--disptype", help="0 - Spectrum, 1 - Energy, 2 - Scroll", type=int)
 parser.add_argument("-c", "--colormode", help="0 - Normal, 1 - BRG, 2 - GBR", type=int)
+parser.add_argument("-n", "--nhist", help="Default -- 2", type=int)
+
 args = parser.parse_args()
 if args.device:
     config.DEVICE = args.device
@@ -33,6 +35,9 @@ if args.gui is not None:
     config.USE_GUI = args.gui
 if args.fpsdisp is not None:
     config.DISPLAY_FPS = args.gui
+if args.nhist is not None:
+    config.N_ROLLING_HISTORY = args.nhist
+
 disp_type = 0
 if args.disptype:
     disp_type = args.disptype
