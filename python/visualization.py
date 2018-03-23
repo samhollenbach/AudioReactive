@@ -250,20 +250,22 @@ def visualize_spectrum(y):
     # #output = np.array([r, g,b]) * 255
 
     output = pick_colors(color_mode, r, g, b)
-    for i, _ in enumerate(output):
-        output[i] *= color_scales[i]
 
     return output
 
 
+@memoize
 def pick_colors(c, r, g, b):
-    return np.array({
+    out = np.array({
                         1: [b, r, g],
                         2: [g, r, b],
                         3: [r, b, g],
                         4: [b, g, r],
                         5: [g, b, r]
                     }.get(c, [r, g, b])) * 255
+    for i, _ in enumerate(out):
+        out[i] *= color_scales[i]
+    return out
 
 
 fft_plot_filter = dsp.ExpFilter(np.tile(1e-1, config.N_FFT_BINS),
