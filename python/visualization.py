@@ -254,7 +254,6 @@ def visualize_spectrum(y):
     return output
 
 
-@memoize
 def pick_colors(c, r, g, b):
     out = np.array({
                         1: [b, r, g],
