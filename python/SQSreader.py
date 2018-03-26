@@ -2,10 +2,6 @@ import boto3
 import os
 import time
 
-access_key = "AKIAJC7BRD74AI3HFL7A"
-access_secret = "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"
-region ="us-east-1"
-queue_url = "https://sqs.us-east-1.amazonaws.com/059321352065/AlexaLights"
 
 
 def pop_message(client, url):
