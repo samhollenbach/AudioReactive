@@ -26,8 +26,8 @@ while time.time() - time_start < 60:
         message = pop_message(client, queue_url)
         print(message)
         if message == "on":
-            os.system("/home/pi/musicVis/launcher.sh")
+            os.system("bash /home/pi/musicVis/launcher.sh")
         elif message == "off":
-            os.system("/home/pi/musicVis/shutdown.sh")
+            os.system("bash /home/pi/musicVis/shutdown.sh")
     except:
         pass
